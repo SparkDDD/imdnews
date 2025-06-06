@@ -25,4 +25,4 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run IMD News Scraper
-        run: python imdnews/imdnewswork.py
+        run: python imdnewswork.py
