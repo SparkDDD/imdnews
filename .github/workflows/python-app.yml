@@ -1,16 +1,17 @@
-name: Daily IMD News Scraper
+name: Run IMD News Scraper
 
 on:
   schedule:
-    - cron: '0 6 * * *'   # Runs every day at 06:00 UTC (adjust as needed)
-  workflow_dispatch:       # Allows manual trigger from GitHub UI
+    - cron: '0 3 * * *'  # Runs every day at 03:00 UTC
+  workflow_dispatch:
 
 jobs:
-  scrape-news:
+  run-script:
     runs-on: ubuntu-latest
-
+    env:
+      AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v3
 
       - name: Set up Python
@@ -24,7 +25,4 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run IMD News Scraper
-        env:
-          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
-        run: |
-          python imdnewswork.py
+        run: python imdnews/imdnewswork.py
