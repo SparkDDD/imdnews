@@ -1,2 +1,4 @@
-requests>=2.31.0
-pyairtable>=1.4.1
+google-api-python-client
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
